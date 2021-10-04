@@ -12,13 +12,15 @@ class Target_Cat extends Model
 	protected $table = "target_cats";
 	public function childs() {
         return $this->hasMany('App\Models\Target_Cat','parent_id','id') ;
-    }
-	
+    }	
 	public function user_target(){
 		return $this->hasMany('App\Models\User_Target', 'target_type_id', 'id');
 		}
 	public function user_achievement(){
 		return $this->hasMany('App\Models\User_Achievement', 'target_type_id', 'id');
+		}
+	public function payment(){
+		return $this->hasMany('App\Models\Payment', 'member_id', 'id');
 		}
 
 }
