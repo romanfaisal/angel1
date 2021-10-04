@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MonthController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Target_CatController;
 use App\Http\Controllers\Target_UnitController;
 use App\Http\Controllers\User_AchievementController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\UserController;
 
 Route::resource('members', MemberController::class);
 Route::resource('months', MonthController::class);
+Route::resource('payments', PaymentController::class);
 Route::resource('target_cats', Target_CatController::class);
 Route::resource('target_units', Target_UnitController::class);
 Route::resource('user_achievements', User_AchievementController::class);
