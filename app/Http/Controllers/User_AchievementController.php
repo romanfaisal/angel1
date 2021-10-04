@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Member;
 use App\Models\Month;
 use App\Models\Target_Cat;
@@ -9,6 +10,8 @@ use App\Models\Target_Unit;
 use App\Models\User;
 use App\Models\User_Achievement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Query\JoinClause;
 
 class User_AchievementController extends Controller
 {
@@ -19,6 +22,15 @@ class User_AchievementController extends Controller
      */
     public function index()
     {
+		/*
+		$user_achievements = DB::table('user_achievements')->
+		->join('members', 'user_achievements.member_id', '=', 'members.id')
+            	->join('months', 'user_achievements.month_id', '=', 'months.id')
+		->join('target_cats', 'user_achievements.target_type_id', '=', 'target_cats.id')
+            	->join('target_units', 'user_achievements.target_unit_id', '=', 'target_units.id')
+		->join('users', 'user_achievements.user_id', '=', 'users.id')
+            	->select('user_achievements.achievement_amount', 'members.name', 'months.month_name', 'target_cats.name', 			'target_units.name', 'users.name')->get();
+		*/
         $user_achievements = User_Achievement::ALL();
 		foreach ($user_achievements as $user_achievement){
 				$user_data= User::where('id', $user_achievement->user_id)->first();
